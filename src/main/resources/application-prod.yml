@@ -1,0 +1,8 @@
+# 正式环境配置
+server:
+  port: 8081
+spring:
+  datasource:
+        url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+        username: root
+        password: linkinstar

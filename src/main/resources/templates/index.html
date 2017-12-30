@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>主页</title>
+    <link href="../static/css/test.css" th:href="@{/css/test.css}" rel="stylesheet"/>
+</head>
+<body>
+<table border="1">
+    <tr th:each="user : ${userList}">
+        <td th:text="${user.id}" class="test">1</td>
+        <td th:text="${user.val}">2</td>
+    </tr>
+</table>
+</body>
+</html>
