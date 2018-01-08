@@ -24,7 +24,7 @@ public class UserController {
         List<UserEntity> userList = userService.listUser();
         for (UserEntity user : userList) {
             System.out.print("id : " + user.getId() + "  ");
-            System.out.println("val : " +user.getVal());
+            System.out.println("val : " + user.getVal());
         }
         request.setAttribute("userList", userList);
         return "index";
