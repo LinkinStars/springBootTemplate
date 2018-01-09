@@ -36,3 +36,6 @@ spring:
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   typeAliasesPackage: com.linkinstars.springBootTemplate.bean
+
+pagehelper:
+    helperDialect: mysql
