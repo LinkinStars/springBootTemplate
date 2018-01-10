@@ -13,5 +13,26 @@
         <td th:text="${user.val}">2</td>
     </tr>
 </table>
+<input type="button" value="上一页" th:onclick="'gotoPage('+${pageNum-1}+', '+${pageSum}+')'" th:if="${pageNum ne 1}"/>
+<span th:text="${pageNum}"></span> / <span th:text="${pageSum}"></span>
+<input type="button" value="下一页" th:onclick="'gotoPage('+${pageNum+1}+', '+${pageSum}+')'" th:if="${pageNum ne pageSum}"/>
+<br/>
+
+<form th:action="@{/test}" method="post">
+    <input type="number" th:value="${pageNum}" name="pageNum"/>
+    <input type="submit" value="跳转"/>
+</form>
+
+<script type="application/javascript" src="../static/js/public.js" th:src="@{/js/public.js}"/>
+<script type="application/javascript" >
+    function gotoPage(pageNum, pageSum) {
+        var result = jumpPage(pageNum, pageSum);
+        if (result == true) {
+            window.location.href = "?pageNum=" + pageNum;
+        } else {
+            alert(result);
+        }
+    }
+</script>
 </body>
 </html>
