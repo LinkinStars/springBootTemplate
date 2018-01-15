@@ -19,8 +19,10 @@ import java.util.List;
 @Controller
 public class UserController {
 
+    /** 用户服务 **/
     @Autowired
     private IUserService userService;
+
     @RequestMapping("/test")
     public String test(HttpServletRequest request, @RequestParam(required = false) Integer pageNum){
         int pageSize = 3;
