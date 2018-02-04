@@ -1,10 +1,13 @@
 package com.linkinstars.springBootTemplate.controller;
 
+import com.baidu.unbiz.fluentvalidator.FluentValidator;
+import com.baidu.unbiz.fluentvalidator.Result;
+import com.baidu.unbiz.fluentvalidator.ResultCollectors;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.linkinstars.springBootTemplate.bean.UserEntity;
 import com.linkinstars.springBootTemplate.service.IUserService;
-import com.linkinstars.springBootTemplate.utils.LogUtil;
+import com.linkinstars.springBootTemplate.validator.NotNullStringValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +18,7 @@ import java.util.List;
 
 /**
  * 控制层
- * Created by LinkinStar
+ * @author LinkinStar
  */
 @Controller
 public class UserController {
@@ -26,6 +29,16 @@ public class UserController {
 
     @RequestMapping("/test")
     public String test(HttpServletRequest request, @RequestParam(required = false) Integer pageNum){
+        //测试校验字符串参数
+        String checkedString = "";
+        Result validatorResult = FluentValidator.checkAll()
+                .on(checkedString, new NotNullStringValidator("测试姓名"))
+                .doValidate()
+                .result(ResultCollectors.toSimple());
+        if (!validatorResult.isSuccess()) {
+            System.out.println(validatorResult.getErrors());
+        }
+
         //分页参数校验
         int pageSize = 3;
         if (pageNum == null || pageNum < 1) {

@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
 /**
- * @Description: Druid监控配置
- * @Author: LinkinStar
+ * Druid监控配置
+ * @author LinkinStar
  */
 @Configuration
 public class DruidConfig {

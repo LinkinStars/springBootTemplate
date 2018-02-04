@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * MyBatis扫描配置
- * Created by LinkinStar
+ * @author LinkinStar
  */
 @Configuration
 @AutoConfigureAfter(MyBatisConfig.class)

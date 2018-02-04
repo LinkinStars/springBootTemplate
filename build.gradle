@@ -36,8 +36,8 @@ bootRun {
 dependencies {
 	//spring相关
 	compile('org.springframework.boot:spring-boot-starter-web')
-	compile group: 'org.springframework', name: 'spring-tx', version: '5.0.2.RELEASE'
-	compile group: 'org.springframework', name: 'spring-jdbc', version: '5.0.2.RELEASE'
+	compile group: 'org.springframework', name: 'spring-tx', version: '4.3.12.RELEASE'
+	compile group: 'org.springframework', name: 'spring-jdbc', version: '4.3.12.RELEASE'
 	compile("org.springframework.boot:spring-boot-devtools")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 
@@ -54,4 +54,9 @@ dependencies {
 
 	//分页插件
 	compile group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: '1.2.3'
+
+	//数据校验插件
+	compile (group: 'com.baidu.unbiz', name: 'fluent-validator-jsr303', version: '1.0.9'){
+        exclude module: 'slf4j-log4j12'
+    }
 }

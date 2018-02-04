@@ -2,12 +2,12 @@ package com.linkinstars.springBootTemplate.bean;
 
 /**
  * 实体类（POJO）
- * Created by LinkinStar
+ * @author LinkinStar
  */
 public class UserEntity {
 
-    int id;
-    String val;
+    private int id;
+    private String val;
 
     public int getId() {
         return id;

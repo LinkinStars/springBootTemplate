@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * 数据访问层
- * Created by LinkinStar
+ * @author LinkinStar
  */
 public interface UserDao {
 

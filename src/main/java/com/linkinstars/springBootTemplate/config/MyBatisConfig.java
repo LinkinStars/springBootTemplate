@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 /**
  * MyBatis配置
- * Created by LinkinStar
+ * @author LinkinStar
  */
 @Configuration
 @ComponentScan

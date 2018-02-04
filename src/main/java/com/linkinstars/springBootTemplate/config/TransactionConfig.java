@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 /**
  * 事务配置
- * Created by LinkinStar
+ * @author LinkinStar
  */
 @Configuration
 @ComponentScan

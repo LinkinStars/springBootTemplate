@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * 服务层接口
- * Created by LinkinStar
+ * @author LinkinStar
  */
 public interface IUserService {
 

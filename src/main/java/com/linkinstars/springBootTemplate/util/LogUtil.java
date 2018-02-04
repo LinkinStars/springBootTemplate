@@ -1,11 +1,11 @@
-package com.linkinstars.springBootTemplate.utils;
+package com.linkinstars.springBootTemplate.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @Description: 日志工具类
- * @Author: LinkinStar
+ * 日志工具类
+ * @author LinkinStar
  */
 public class LogUtil {
 
