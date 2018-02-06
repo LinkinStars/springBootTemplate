@@ -37,6 +37,10 @@ spring:
         connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
         # 合并多个DruidDataSource的监控数据
         #spring.datasource.useGlobalDataSourceStat=true
+  #redis相关配置
+  redis:
+    host: localhost
+    port: 6379
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml

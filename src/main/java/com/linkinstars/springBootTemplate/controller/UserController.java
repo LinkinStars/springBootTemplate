@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -63,6 +64,12 @@ public class UserController {
         } catch (Exception e) {
             LogUtil.printLog(e, this.getClass());
         }*/
+
+        //测试session存放redis测试
+        HttpSession session = request.getSession();
+        System.out.println("session数据：" + session.getAttribute("xxx"));
+        session.setAttribute("xxx","123");
+        System.out.println("session数据：" + session.getAttribute("xxx"));
         return "index";
     }
 }

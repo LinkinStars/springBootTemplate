@@ -45,6 +45,6 @@ src/main/resources/mapper
 存放mybatis的sql语句xml文件
 ```
 
-
+新增redis配置，项目启动前本机需要启动redis，否则会出现ERRROR
 
 持续更新中~~~~~~~
