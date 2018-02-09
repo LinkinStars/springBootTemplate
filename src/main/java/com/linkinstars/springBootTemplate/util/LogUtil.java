@@ -15,13 +15,7 @@ public class LogUtil {
      */
     public static void printLog(String message){
         Logger logger  =  LoggerFactory.getLogger("my_info");
-
-        StringBuffer logOut = new StringBuffer();
-        logOut.append("\n");
-        logOut.append(message);
-        logOut.append("\n");
-
-        logger.info(logOut.toString());
+        logger.info(message);
     }
 
     /**

@@ -2,7 +2,10 @@ package com.linkinstars.springBootTemplate.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.scheduling.annotation.SchedulingConfigurer;
+import org.springframework.scheduling.config.ScheduledTaskRegistrar;
+
+import java.util.concurrent.Executors;
 
 /**
  * 定时任务配置
@@ -10,10 +13,13 @@ import org.springframework.scheduling.annotation.Scheduled;
  */
 @Configuration
 @EnableScheduling
-public class TimeTaskConfig {
+public class TimeTaskConfig implements SchedulingConfigurer {
 
-    @Scheduled(cron = "0/5 * * * * ?")
-    public void test1(){
-        System.out.println("任务1：执行");
+    /**
+     * 配置定时任务线程池大小
+     */
+    @Override
+    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+        taskRegistrar.setScheduler(Executors.newScheduledThreadPool(10));
     }
 }
