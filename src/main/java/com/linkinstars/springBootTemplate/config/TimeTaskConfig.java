@@ -1,11 +1,14 @@
 package com.linkinstars.springBootTemplate.config;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 
-import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.ThreadFactory;
 
 /**
  * 定时任务配置
@@ -20,6 +23,8 @@ public class TimeTaskConfig implements SchedulingConfigurer {
      */
     @Override
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
-        taskRegistrar.setScheduler(Executors.newScheduledThreadPool(10));
+        ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNameFormat("time-task-%d").build();
+        ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(10, namedThreadFactory);
+        taskRegistrar.setScheduler(executorService);
     }
 }

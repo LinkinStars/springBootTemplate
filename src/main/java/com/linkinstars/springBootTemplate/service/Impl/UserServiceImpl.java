@@ -21,6 +21,7 @@ public class UserServiceImpl implements IUserService{
     /**
      * 查询
      */
+    @Override
     public List<UserEntity> listUser() {
         return userDao.listUser();
     }

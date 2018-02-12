@@ -11,7 +11,9 @@ import com.baidu.unbiz.fluentvalidator.ValidatorHandler;
  */
 public class NotNullStringValidator extends ValidatorHandler<String> implements Validator<String> {
 
-    //需要被校验字符串的字段名
+    /**
+     * 需要被校验字符串的字段名
+     */
     private String fieldName;
 
     public NotNullStringValidator(String fieldName) {

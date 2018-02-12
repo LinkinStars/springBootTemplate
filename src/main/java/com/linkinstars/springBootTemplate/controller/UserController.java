@@ -56,16 +56,7 @@ public class UserController {
         request.setAttribute("pageNum", pageNum);
         request.setAttribute("pageSum", pageInfo.getPages());
 
-        //测试打印日志
-        /*LogUtil.printLog("测试打印info日志信息");
-        Exception exception = new Exception("测试打印error日志");
-        try {
-            throw exception;
-        } catch (Exception e) {
-            LogUtil.printLog(e, this.getClass());
-        }*/
-
-        //测试session存放redis测试
+        //测试session存放redis
         HttpSession session = request.getSession();
         System.out.println("session数据：" + session.getAttribute("xxx"));
         session.setAttribute("xxx","123");

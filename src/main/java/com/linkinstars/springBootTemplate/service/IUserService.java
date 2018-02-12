@@ -11,7 +11,8 @@ import java.util.List;
 public interface IUserService {
 
     /**
-     * 查询
+     * 查询用户列表
+     * @return 用户列表
      */
     List<UserEntity> listUser();
 
