@@ -36,6 +36,7 @@ bootRun {
 dependencies {
 	//spring相关
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-aop')
 	compile group: 'org.springframework', name: 'spring-tx', version: '4.3.12.RELEASE'
 	compile group: 'org.springframework', name: 'spring-jdbc', version: '4.3.12.RELEASE'
 	compile("org.springframework.boot:spring-boot-devtools")
