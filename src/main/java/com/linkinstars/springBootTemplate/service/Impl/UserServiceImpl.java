@@ -23,6 +23,7 @@ public class UserServiceImpl implements IUserService{
      */
     @Override
     public List<UserEntity> listUser() {
+        //测试抛出异常 throw new ServiceException();
         return userDao.listUser();
     }
 
