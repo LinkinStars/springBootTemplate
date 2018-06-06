@@ -64,6 +64,9 @@ dependencies {
 	//session保存redis
 	compile group: 'org.springframework.session', name: 'spring-session-data-redis', version: '1.3.1.RELEASE'
 
+	//让thymeleaf解析标签没有闭合时通过
+	compile group: 'net.sourceforge.nekohtml', name: 'nekohtml', version: '1.9.22'
+
 	//谷歌官方Java项目广泛依赖的核心库
 	compile group: 'com.google.guava', name: 'guava', version: '24.0-jre'
 }
