@@ -7,6 +7,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.linkinstars.springBootTemplate.bean.UserEntity;
 import com.linkinstars.springBootTemplate.service.IUserService;
+import com.linkinstars.springBootTemplate.util.RedisUtil;
 import com.linkinstars.springBootTemplate.validator.NotNullStringValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,10 @@ public class UserController {
     /** 用户服务 **/
     @Autowired
     private IUserService userService;
+
+    /** 用户服务 **/
+    @Autowired
+    private RedisUtil redisUtil;
 
     @RequestMapping("/test")
     public String test(HttpServletRequest request, @RequestParam(required = false) Integer pageNum){
@@ -61,6 +66,19 @@ public class UserController {
         System.out.println("session数据：" + session.getAttribute("xxx"));
         session.setAttribute("xxx","123");
         System.out.println("session数据：" + session.getAttribute("xxx"));
+
+
+        //测试
+        redisUtil.setString("xxx","xxx");
+        System.out.println("redis数据获取为: " + redisUtil.getString("xxx"));
+        redisUtil.delete("xxx");
+        System.out.println("redis数据获取为: " + redisUtil.getString("xxx"));
+
+        redisUtil.setHash("xxxx", "a", "1");
+        redisUtil.setHash("xxxx", "b", "2");
+        redisUtil.setHash("xxxx", "c", "3");
+
+        System.out.println("redis中hash的数据为： " + redisUtil.getHash("xxxx","a"));
         return "index";
     }
 }
