@@ -1,6 +1,7 @@
 package com.linkinstars.springBootTemplate.aop;
 
 import com.linkinstars.springBootTemplate.exception.ServiceException;
+import com.linkinstars.springBootTemplate.util.LogUtil;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,6 +23,7 @@ public class GlobalExceptionResolver {
     @ExceptionHandler(value = Exception.class)
     public ModelAndView exceptionHandler() {
         //当然也可以直接返回ModelAndView等类型，然后跳转相应的错误页面，这都根据实际的需要进行使用
-        return new ModelAndView();
+        LogUtil.printLog("出现异常");
+        return null;
     }
 }

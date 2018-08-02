@@ -11,9 +11,13 @@ import java.util.List;
 public interface UserDao {
 
     /**
-     * 查询用户列表
+     * 查询数据
      * @return 用户列表
      */
     List<UserEntity> listUser();
 
+    /**
+     * 添加数据
+     */
+    boolean addUser();
 }

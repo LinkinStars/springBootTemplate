@@ -68,7 +68,7 @@ public class UserController {
         System.out.println("session数据：" + session.getAttribute("xxx"));
 
 
-        //测试
+        //测试redis
         redisUtil.setString("xxx","xxx");
         System.out.println("redis数据获取为: " + redisUtil.getString("xxx"));
         redisUtil.delete("xxx");
@@ -79,6 +79,11 @@ public class UserController {
         redisUtil.setHash("xxxx", "c", "3");
 
         System.out.println("redis中hash的数据为： " + redisUtil.getHash("xxxx","a"));
+
+
+        //测试事务回滚
+        //userService.addUser();
+
         return "index";
     }
 }

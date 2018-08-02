@@ -3,9 +3,8 @@
 
 所谓模版，和之前一样，就是一个最简单的项目，包含所有最简单的空实现。
 
+#### 模版的目的  
 ```
-模版的目的
-
 1、不熟悉SpringBoot项目的人，在学习了SpringBoot的基础部分之后，能根据这个模版快速上手
 
 2、开发团队的项目结构和使用装备的统一，包括目录结构，使用的一些组件上面的统一
@@ -13,9 +12,13 @@
 3、不想重复造轮子，每次新建一个项目很麻烦
 ```
 
-```
-模版所用组件和版本
+#### 注意点
+1. _项目启动前本机需要启动redis，否则会出现ERRROR_
+2. _测试地址为http://127.0.0.1:8080/test，测试方法全部在UserController中_
 
+
+#### 模版所用组件和版本  
+```
 jdk 1.8
 gradle 4.3.1
 springBoot 1.5.8
@@ -25,9 +28,8 @@ Druid 1.0.19
 thymeleaf
 ```
  
+ #### 目录简单说明  
 ```
-目录简单说明
-
 src/main/java/
 存放java代码，其中SpringBootTemplateApplication为SpringBoot启动类
 
@@ -45,6 +47,22 @@ src/main/resources/mapper
 存放mybatis的sql语句xml文件
 ```
 
-新增redis配置，项目启动前本机需要启动redis，否则会出现ERRROR
+#### 数据库表结构
+````sql
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for user_tab
+-- ----------------------------
+DROP TABLE IF EXISTS `user_tab`;
+CREATE TABLE `user_tab` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `val` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+SET FOREIGN_KEY_CHECKS = 1;
+````
 
 持续更新中~~~~~~~

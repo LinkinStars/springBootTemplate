@@ -7,4 +7,9 @@
         FROM user_tab
     </select>
 
+    <insert id="addUser">
+        INSERT INTO user_tab
+        (id, val)
+        VALUE(1,"1")
+    </insert>
 </mapper>
