@@ -22,6 +22,13 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
 
+  # 配置热部署
+  devtools:
+    restart:
+      # 如果改为true则当修改java目录下的文件时会自动进行重启
+      enabled: false
+      additional-paths: src/main/java
+
   # 数据方面的配置
   datasource:
     # 使用druid数据源
