@@ -2,7 +2,24 @@
 server:
   port: 8081
 spring:
+  # 数据库连接配置
   datasource:
-        url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=true
-        username: root
-        password: 1qaz2wsx
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=true
+    username: root
+    password: 1qaz2wsx
+
+  #redis相关配置
+  redis:
+    host: localhost
+    port: 6379
+    pool:
+      # 最大连接数（负值表示没有限制）
+      max-active: 8
+      # 最大阻塞等待时间（负值表示没有限制）
+      max-wait: 1
+      # 最大空闲链接
+      max-idle: 8
+      # 最小空闲链接
+      min-idle: 0
+    # 链接超时时间（毫秒）
+    timeout: 0

@@ -2,25 +2,7 @@ spring:
   # 选择加载不同环境的配置文件
   profiles:
     active: dev
-
-  # 页面方面的配置
-  thymeleaf:
-    encoding: UTF-8
-    # 热部署静态文件
-    cache: false
-    # 让thymeleaf解析标签没有闭合时通过
-    mode: LEGACYHTML5
-
-  # MVC相关配置
-  mvc:
-    # 配置ICO
-    favicon:
-      enabled: false
-  http:
-    # 配置上传文件限制大小
-    multipart:
-      max-file-size: 10MB
-      max-request-size: 10MB
+    include: mvc, data, config
 
   # 配置热部署
   devtools:
@@ -28,50 +10,6 @@ spring:
       # 如果改为true则当修改java目录下的文件时会自动进行重启
       enabled: false
       additional-paths: src/main/java
-
-  # 数据方面的配置
-  datasource:
-    # 使用druid数据源
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    # 连接池的配置信息
-    maxActive: 20
-    initialSize: 5
-    minIdle: 5
-    # 配置获取连接等待超时的时间
-    maxWait: 60000
-    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-    timeBetweenEvictionRunsMillis: 60000
-    # 配置一个连接在池中最小生存的时间，单位是毫秒
-    minEvictableIdleTimeMillis: 300000
-    validationQuery: SELECT 1 FROM DUAL
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
-    poolPreparedStatements: true
-    maxOpenPreparedStatements: 20
-
-    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
-    filters: stat,wall,log4j
-    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
-    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-    # 合并多个DruidDataSource的监控数据
-    #spring.datasource.useGlobalDataSourceStat=true
-  #redis相关配置
-  redis:
-    host: localhost
-    port: 6379
-    pool:
-      # 最大连接数（负值表示没有限制）
-      max-active: 8
-      # 最大阻塞等待时间（负值表示没有限制）
-      max-wait: 1
-      # 最大空闲链接
-      max-idle: 8
-      # 最小空闲链接
-      min-idle: 0
-    # 链接超时时间（毫秒）
-    timeout: 0
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml
