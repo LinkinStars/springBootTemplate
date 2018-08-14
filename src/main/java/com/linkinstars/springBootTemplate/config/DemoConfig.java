@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * @author LinkinStar
  */
 @Component
-@ConfigurationProperties(value = "demo")
+@ConfigurationProperties(prefix = "demo")
 public class DemoConfig {
     private int id;
     private String val;
