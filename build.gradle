@@ -16,6 +16,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
 
 group = 'com.linkinstars'
 version = '0.0.1-SNAPSHOT'
@@ -69,4 +70,7 @@ dependencies {
 
 	//谷歌官方Java项目广泛依赖的核心库
 	compile group: 'com.google.guava', name: 'guava', version: '24.0-jre'
+
+    //log4jdbc
+    compile group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
 }

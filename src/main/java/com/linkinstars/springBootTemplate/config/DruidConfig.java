@@ -3,11 +3,14 @@ package com.linkinstars.springBootTemplate.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import net.sf.log4jdbc.sql.jdbcapi.DataSourceSpy;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
@@ -17,6 +20,15 @@ import javax.sql.DataSource;
  */
 @Configuration
 public class DruidConfig {
+
+    /**
+     * 配置spy数据源
+     */
+    @Bean
+    @Primary
+    public DataSource spyDataSource(@Qualifier("druidDataSource") DataSource druidDataSource){
+        return new DataSourceSpy(druidDataSource);
+    }
 
     /**
      * 配置读取spring数据源

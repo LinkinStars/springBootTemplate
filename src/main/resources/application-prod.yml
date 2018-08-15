@@ -4,9 +4,9 @@ server:
 spring:
   # 数据库连接配置
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=true
+    url: jdbc:mysql://192.168.4.211:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=true
     username: root
-    password: 1qaz2wsx
+    password: Qmkj@0622.
 
   #redis相关配置
   redis:

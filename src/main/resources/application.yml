@@ -16,4 +16,7 @@ mybatis:
   typeAliasesPackage: com.linkinstars.springBootTemplate.bean
 
 pagehelper:
-    helperDialect: mysql
+  helperDialect: mysql
+
+package:
+  type: war
