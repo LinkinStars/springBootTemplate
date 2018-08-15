@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="true">
     <!-- 项目名称 -->
-    <property name="PROJECT_NAME" value="springBootTemplate" />
+    <property name="PROJECT_NAME" value="springBootTemplate"/>
 
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-    <property name="LOG_HOME" value="${catalina.base}/logs" />
+    <property name="LOG_HOME" value="${catalina.base:-.}/logs"/>
 
     <!-- 控制台输出 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -17,7 +17,7 @@
     </appender>
 
     <!-- 系统错误日志文件 -->
-    <appender name="SYSTEM_FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="SYSTEM_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- 过滤器，只打印ERROR级别的日志 -->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>ERROR</level>
@@ -44,7 +44,7 @@
     </logger>
 
     <!-- 自己打印的日志文件，用于记录重要日志信息 -->
-    <appender name="MY_INFO_FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="MY_INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- 过滤器，只打印ERROR级别的日志 -->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>INFO</level>
@@ -66,22 +66,47 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    <logger name="my_info" additivity="true">
+    <logger name="my_info" additivity="true" level="info">
+        <appender-ref ref="MY_INFO_FILE"/>
+    </logger>
+
+    <!-- log4jdbc配置 -->
+    <logger name="jdbc.audit" additivity="true" level="ERROR">
+        <appender-ref ref="MY_INFO_FILE"/>
+    </logger>
+    <logger name="jdbc.sqlonly" additivity="true" level="ERROR">
+        <appender-ref ref="MY_INFO_FILE"/>
+    </logger>
+    <logger name="jdbc.resultset" additivity="true" level="ERROR">
+        <appender-ref ref="MY_INFO_FILE"/>
+    </logger>
+    <logger name="jdbc.connection" additivity="true" level="ERROR">
+        <appender-ref ref="MY_INFO_FILE"/>
+    </logger>
+    <logger name="jdbc.resultsettable" additivity="true" level="ERROR">
         <appender-ref ref="MY_INFO_FILE"/>
     </logger>
 
     <!-- 开发环境下的日志配置 -->
     <springProfile name="dev">
+        <logger name="jdbc.sqltiming" additivity="true" level="INFO">
+            <appender-ref ref="MY_INFO_FILE"/>
+        </logger>
+
         <root level="INFO">
-            <appender-ref ref="CONSOLE" />
-            <appender-ref ref="SYSTEM_FILE" />
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="SYSTEM_FILE"/>
         </root>
     </springProfile>
 
     <!-- 生产环境下的日志配置 -->
     <springProfile name="prod">
+        <logger name="jdbc.sqltiming" additivity="true" level="ERROR">
+            <appender-ref ref="MY_INFO_FILE"/>
+        </logger>
+
         <root level="INFO">
-            <appender-ref ref="SYSTEM_FILE" />
+            <appender-ref ref="SYSTEM_FILE"/>
         </root>
     </springProfile>
 </configuration>
