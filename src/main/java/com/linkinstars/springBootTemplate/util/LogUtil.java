@@ -14,7 +14,7 @@ public class LogUtil {
      * @param message 需要被打印的信息
      */
     public static void printLog(String message){
-        Logger logger  =  LoggerFactory.getLogger("my_info");
+        Logger logger = LoggerFactory.getLogger("my_info");
         logger.info(message);
     }
 
@@ -23,7 +23,7 @@ public class LogUtil {
      * @param e 异常信息
      */
     public static void printLog(Exception e, Class<?> clazz){
-        Logger logger  =  LoggerFactory.getLogger(clazz);
+        Logger logger = LoggerFactory.getLogger(clazz);
 
         StringBuffer logOut = new StringBuffer();
         logOut.append("\n");
@@ -36,7 +36,6 @@ public class LogUtil {
             logOut.append("\n");
         }
 
-        logOut.append("\n");
         logOut.append("\n");
 
         logger.error(logOut.toString());

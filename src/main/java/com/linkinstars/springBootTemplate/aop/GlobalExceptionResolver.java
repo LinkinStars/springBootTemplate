@@ -21,8 +21,9 @@ public class GlobalExceptionResolver {
     }
 
     @ExceptionHandler(value = Exception.class)
-    public ModelAndView exceptionHandler() {
+    public ModelAndView exceptionHandler(Exception exception) {
         //当然也可以直接返回ModelAndView等类型，然后跳转相应的错误页面，这都根据实际的需要进行使用
+        LogUtil.printLog(exception, Exception.class);
         LogUtil.printLog("出现异常");
         return null;
     }
