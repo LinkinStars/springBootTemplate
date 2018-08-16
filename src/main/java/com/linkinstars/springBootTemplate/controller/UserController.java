@@ -69,16 +69,17 @@ public class UserController {
 
 
         //测试redis
-        redisUtil.setString("xxx","xxx");
-        System.out.println("redis数据获取为: " + redisUtil.getString("xxx"));
+        UserEntity user = new UserEntity();
+        user.setId(1);
+        user.setVal("xxx");
+
+        redisUtil.set("xxx", user);
+        Object object = redisUtil.get("xxx");
+        UserEntity userTemp = (UserEntity) object;
+
+        System.out.println("redis数据获取为: " + userTemp);
         redisUtil.delete("xxx");
-        System.out.println("redis数据获取为: " + redisUtil.getString("xxx"));
-
-        redisUtil.setHash("xxxx", "a", "1");
-        redisUtil.setHash("xxxx", "b", "2");
-        redisUtil.setHash("xxxx", "c", "3");
-
-        System.out.println("redis中hash的数据为： " + redisUtil.getHash("xxxx","a"));
+        System.out.println("redis删除数据之后获取为: " + redisUtil.get("xxx"));
 
 
         //测试事务回滚

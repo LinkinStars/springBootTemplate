@@ -5,11 +5,11 @@ spring:
     include: mvc, data, config
 
   # 配置热部署
-  devtools:
-    restart:
-      # 如果改为true则当修改java目录下的文件时会自动进行重启
-      enabled: false
-      additional-paths: src/main/java
+#  devtools:
+#    restart:
+#      # 如果改为true则当修改java目录下的文件时会自动进行重启
+#      enabled: true
+#      additional-paths: src/main/java
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml

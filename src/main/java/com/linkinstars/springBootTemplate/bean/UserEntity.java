@@ -25,4 +25,11 @@ public class UserEntity {
         this.val = val;
     }
 
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", val='" + val + '\'' +
+                '}';
+    }
 }
