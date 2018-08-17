@@ -16,7 +16,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'war'
+//apply plugin: 'war'
 
 group = 'com.linkinstars'
 version = '0.0.1-SNAPSHOT'
@@ -78,7 +78,7 @@ dependencies {
     //log4jdbc
     compile group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
 
-    // https://mvnrepository.com/artifact/io.protostuff/protostuff-core
+    //protostuff序列化依赖
     compile group: 'io.protostuff', name: 'protostuff-runtime', version: '1.6.0'
     compile group: 'io.protostuff', name: 'protostuff-core', version: '1.6.0'
 }
