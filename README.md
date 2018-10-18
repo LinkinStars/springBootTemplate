@@ -115,3 +115,20 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 <br/>
 <br/>
+
+## 快速启动和停止应用的脚本
+app.sh脚本为快速启动应用和关闭应用的脚本，使用方法如下：  
+
+首先，将你需要发布的jar包，和含有上述内容的脚本app.sh，上传至linux服务器，**注意两者必须处于同一目录**，并且该目录下只有一个jar包，并给与app.sh相应执行权限，chmod 777 app.sh
+
+然后就可以执行脚本，命令如下
+
+| 命令 | 作用 |
+| :-: | :-: |
+| ./app.sh start | 启动应用 |
+| ./app.sh stop | 关闭应用 |
+| ./app.sh restart | 重启应用 |
+| ./app.sh status | 查看应用状态 |
+| ./app.sh stop -f | 强制kill应用进程  |
+
+注意，重新发布应用时，先stop再上传替换jar包哦。
