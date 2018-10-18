@@ -62,7 +62,7 @@ function restart()
     start
 }
 
-usage()
+function usage()
 {
     echo "Usage: $0 {start|stop|restart|status|stop -f}"
     echo "Example: $0 start"
@@ -83,5 +83,5 @@ case $1 in
 	status;;
 	
 	*)
-    usage
+	usage;;
 esac
