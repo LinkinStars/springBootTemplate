@@ -131,4 +131,12 @@ app.sh脚本为快速启动应用和关闭应用的脚本，使用方法如下�
 | ./app.sh status | 查看应用状态 |
 | ./app.sh stop -f | 强制kill应用进程  |
 
-注意，重新发布应用时，先stop再上传替换jar包哦。
+**注意，重新发布应用时，先stop再上传替换jar包哦。**
+
+脚本中可以修改的地方：  
+19行： nohup java -XX:+UseG1GC -XX:+HeapDumpOnOutOfMemoryError -Xms512M -Xmx4G -jar $appName > /dev/null 2>&1 &  
+这是最终jar的启动命令，在这里你需要对gc、Xms、Xmx等针对你机器的实际情况修改，还可以添加你所需要的启动参数等。  
+
+56行： for i in {3..1}  
+这里是设置restart的时候等待的时间，因为有的项目在3秒之内可能没有办法正常停止，所以可以调整为5秒，保证应用确实正常停止后再启动  
+
