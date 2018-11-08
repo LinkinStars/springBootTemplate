@@ -9,10 +9,12 @@ import com.linkinstars.springBootTemplate.bean.UserEntity;
 import com.linkinstars.springBootTemplate.service.IUserService;
 import com.linkinstars.springBootTemplate.util.RedisUtil;
 import com.linkinstars.springBootTemplate.validator.NotNullStringValidator;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -86,5 +88,20 @@ public class UserController {
         //userService.addUser();
 
         return "index";
+    }
+
+    @RequestMapping("/test/get")
+    @ResponseBody
+    public String get(HttpServletRequest request) throws Exception{
+        JSONObject data = new JSONObject();
+        data.put("id",1);
+        data.put("name", "名称");
+        data.put("val", "测试");
+        
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("code",1);
+        jsonObject.put("message","请求成功");
+        jsonObject.put("data", data);
+        return jsonObject.toString();
     }
 }
