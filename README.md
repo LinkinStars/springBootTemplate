@@ -94,7 +94,41 @@ SET FOREIGN_KEY_CHECKS = 1;
 | set           | String key, Object value, Long expireTime | void    |
 | get           | String key                                | Object  |
 
-`RedisUtil`文件路径于`src/main/java/com/linkinstars/springBootTemplate/util/RedisUtil.java`
+
+<br/>
+<br/>
+
+
+## FileHandleUtil
+> 文件上传工具类，上传到与jar包同级的static目录下，开发环境和服务器环境均可
+----------
+方法：upload  
+  
+入参：  
+inputStream 文件流  
+path 文件路径，如：image/  
+filename 文件名，如：test.jpg  
+
+出参：  
+最后文件存放路径为：static/upload/image/test.jpg  
+文件访问路径为：http://127.0.0.1:8080/upload/image/test.jpg  
+该方法返回值为：/upload/image/test.jpg    
+
+-----------
+方法：delete  
+
+入参：  
+path： 文件路径，是upload方法返回的路径如：/upload/image/test.jpg
+
+----------
+关联配置：
+````
+spring:  
+  # 静态资源路径
+  resources:
+    static-locations: classpath:static/,file:static/
+````
+
 
 <br/>
 <br/>

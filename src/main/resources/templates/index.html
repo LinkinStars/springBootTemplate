@@ -23,7 +23,16 @@
     <input type="submit" value="跳转"/>
 </form>
 
+
 <a th:href="@{/druid/index.html}" target="_blank">druid监控平台</a>
+
+<div>
+    <p>上传文件：</p>
+<form th:action="@{/upload}" method="post" enctype="multipart/form-data" >
+    <input type="file" name="file">
+    <input type="submit">
+</form>
+</div>
 
 <script type="application/javascript" src="../static/js/public.js" th:src="@{/js/public.js}"/>
 <script type="application/javascript" >

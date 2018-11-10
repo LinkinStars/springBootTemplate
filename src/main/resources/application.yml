@@ -3,6 +3,10 @@ spring:
   profiles:
     active: dev
     include: mvc, data, config
+  
+  # 静态资源路径
+  resources:
+    static-locations: classpath:static/,file:static/
 
   # 配置热部署
 #  devtools:
