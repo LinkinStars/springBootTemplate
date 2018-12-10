@@ -59,7 +59,7 @@ public class UserController {
         //进行分页查询
         PageHelper.startPage(pageNum, pageSize);
         List<UserEntity> userList = userService.listUser();
-        PageInfo pageInfo = new PageInfo(userList);
+        PageInfo pageInfo = new PageInfo<>(userList);
 
         //设置返回参数
         request.setAttribute("userList", userList);

@@ -99,6 +99,18 @@ SET FOREIGN_KEY_CHECKS = 1;
 <br/>
 
 
+## CacheConfig简单缓存
+1、启动类上需要加@EnableCaching注解  
+2、在需要执行缓存的类上面写上缓存前缀名称  
+@CacheConfig(cacheNames="user")  
+3、在查询方法上使用@Cacheable(key = "'list'")配置键的名称  
+4、在修改方法上使用@CachePut(key = "'list'")配置键的名称  
+http://127.0.0.1:8080/cache/user/list  
+http://127.0.0.1:8080/cache/user/add  
+http://127.0.0.1:8080/cache/user/delete  
+<br/>
+<br/>
+
 ## FileHandleUtil
 > 文件上传工具类，上传到与jar包同级的static目录下，开发环境和服务器环境均可
 ----------
