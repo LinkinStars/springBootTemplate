@@ -1,13 +1,12 @@
 #!/bin/bash
+## Author LinkinStar
+## UPDATE 2019-01-05
+version="1.0.1";
 
-appName=`ls|grep .jar$`
-if [ -z $appName ]
-then
-    echo "Please check that this script and your jar-package is in the same directory!"
-    exit 1
+appName=$2
+if [ -z $appName ];then
+    appName=`ls -t |grep .jar$ |head -n1`
 fi
-
-killForceFlag=$2
 
 function start()
 {
@@ -16,27 +15,60 @@ function start()
 		echo "Maybe $appName is running, please check it..."
 	else
 		echo "The $appName is starting..."
-		nohup java -XX:+UseG1GC -XX:+HeapDumpOnOutOfMemoryError -Xms512M -Xmx4G -jar $appName > /dev/null 2>&1 &
+		nohup java -jar ./$appName -XX:+UseG1GC -XX:+HeapDumpOnOutOfMemoryError -Xms512M -Xmx4G > /dev/null 2>&1 &
 	fi
 }
 
 function stop()
 {
 	appId=`ps -ef |grep java|grep $appName|awk '{print $2}'`
-	if [ -z $appId ]
-	then
+	if [ -z $appId ];then
 	    echo "Maybe $appName not running, please check it..."
 	else
-        echo -n "The $appName is stopping..."
-        if [ "$killForceFlag" == "-f" ]
-        then 
-            echo "by force"
-            kill -9 $appId
-        else
-            echo
-	        kill $appId
-	    fi
+        echo "The $appName is stopping..."
+        kill $appId
 	fi
+}
+
+function restart()
+{
+    # get release version
+    releaseApp=`ls -t |grep .jar$ |head -n1`
+    
+    # get last version 
+    lastVersionApp=`ls -t |grep .jar$ |head -n2 |tail -n1`
+
+    appName=$lastVersionApp
+    stop
+    for i in {5..1}
+    do
+        echo -n "$i "
+        sleep 1
+    done
+    echo 0
+    
+    backup
+    
+    appName=$releaseApp
+    start
+}
+
+function backup() 
+{
+    # get backup version
+    backupApp=`ls |grep -wv $releaseApp$ |grep .jar$`
+    
+    # create backup dir
+    if [ ! -d "backup" ];then
+        mkdir backup
+    fi
+    
+    # backup
+    for i in ${backupApp[@]}
+    do
+        echo "backup" $i
+        mv $i backup
+    done
 }
 
 function status()
@@ -50,17 +82,6 @@ function status()
 	fi
 }
 
-function restart()
-{
-    stop
-    for i in {3..1}
-    do
-        echo -n "$i "
-        sleep 1
-    done
-    echo 0
-    start
-}
 
 function usage()
 {

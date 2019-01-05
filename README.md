@@ -165,7 +165,7 @@ spring:
 ## 快速启动和停止应用的脚本
 app.sh脚本为快速启动应用和关闭应用的脚本，使用方法如下：  
 
-首先，将你需要发布的jar包，和含有上述内容的脚本app.sh，上传至linux服务器，**注意两者必须处于同一目录**，并且该目录下只有一个jar包，并给与app.sh相应执行权限，chmod 777 app.sh
+首先，将你需要发布的jar包，和含有上述内容的脚本app.sh，上传至linux服务器，**注意两者必须处于同一目录**，并给与app.sh相应执行权限，chmod 777 app.sh
 
 然后就可以执行脚本，命令如下
 
@@ -175,14 +175,27 @@ app.sh脚本为快速启动应用和关闭应用的脚本，使用方法如下�
 | ./app.sh stop | 关闭应用 |
 | ./app.sh restart | 重启应用 |
 | ./app.sh status | 查看应用状态 |
-| ./app.sh stop -f | 强制kill应用进程  |
 
-**注意，重新发布应用时，先stop再上传替换jar包哦。**
 
 脚本中可以修改的地方：  
-19行： nohup java -XX:+UseG1GC -XX:+HeapDumpOnOutOfMemoryError -Xms512M -Xmx4G -jar $appName > /dev/null 2>&1 &  
+nohup java -XX:+UseG1GC -XX:+HeapDumpOnOutOfMemoryError -Xms512M -Xmx4G -jar $appName > /dev/null 2>&1 &  
 这是最终jar的启动命令，在这里你需要对gc、Xms、Xmx等针对你机器的实际情况修改，还可以添加你所需要的启动参数等。  
 
-56行： for i in {3..1}  
-这里是设置restart的时候等待的时间，因为有的项目在3秒之内可能没有办法正常停止，所以可以调整为5秒，保证应用确实正常停止后再启动  
+for i in {5..1}  
+这里是设置restart的时候等待的时间，因为有的项目在3秒之内可能没有办法正常停止，所以可以调整为10秒，保证应用确实正常停止后再启动  
+
+- 脚本至更新1.0.1  
+1. 启动停止优化  
+./app.sh start 默认会启动当前目录下最后放入的jar包，stop同理   
+
+2. 启动停止参数优化    
+./app.sh start springBootTemplate-0.0.1-SNAPSHOT.jar后面可以跟上项目名称，启动或停止指定的项目  
+
+3. 重启指令优化，方便重新发布服务  
+./app.sh restart如果当前目录下有两个jar包，会停止前一个放入的jar并备份，然后启动最新放入的jar
+如:当前目录情况为  
+app1.jar 放入文件夹时间为12:00  
+app2.jar 放入文件夹时间为13:00  
+app.sh  
+执行重启指令后，先停止app1.jar，然后备份app1.jar，然后启动app2.jar   
 
