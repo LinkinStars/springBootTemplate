@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linkinstars.springBootTemplate.dao.OrderDao">
+
+    <insert id="insertOrder" parameterType="com.linkinstars.springBootTemplate.bean.OrderTestDO">
+        INSERT INTO order_test_tab
+        (order_id, order_name, order_status, order_content, add_time) 
+        VALUE(#{orderId}, #{orderName}, #{orderStatus}, #{orderContent}, #{addTime})
+    </insert>
+    
+    <insert id="insertManyOrders" parameterType="java.util.List">
+        INSERT INTO order_test_tab
+        (order_id, order_name, order_status, order_content, add_time) 
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.orderId}, #{item.orderName}, #{item.orderStatus}, #{item.orderContent}, #{item.addTime})    
+        </foreach>
+    </insert>
+    
+    <delete id="deleteOrder">
+        DELETE FROM order_test_tab
+    </delete>
+</mapper>

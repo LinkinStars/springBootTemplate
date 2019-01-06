@@ -2,7 +2,6 @@ package com.linkinstars.springBootTemplate.timer;
 
 import com.linkinstars.springBootTemplate.util.LogUtil;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.Scheduled;
 
 /**
  * 定时任务配置
@@ -11,7 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @Configuration
 public class TimeTask {
 
-    @Scheduled(cron = "0/2 * * * * ?")
+    //@Scheduled(cron = "0/2 * * * * ?")
     public void test1(){
         LogUtil.printLog("任务1：执行");
         try {
